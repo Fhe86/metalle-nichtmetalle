@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metalle & Co. · Lehrkraft</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="icons/v1/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/v1/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/v1/icon-180.png">
+<link rel="manifest" href="icons/v1/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Metalle & Co.">
+<meta name="theme-color" content="#22a061">
+<style>
+:root { --gruen: #22a061; --gruen-tief: #146b40; --gruen-hell: #e3f6ea; --gruen-mittel: #b9e6cb; --gelb-hell: #fff6d6; --gelb: #ffd24d; --tinte: #1d2b26; --grau: #5d6e66; --linie: #d5e6da; }
+* { box-sizing: border-box; margin: 0; }
+body { background: #f6faf4; color: var(--tinte); font: 17px/1.5 "Avenir Next", "Segoe UI", Arial, sans-serif; }
+main { width: min(940px, 100%); margin: 0 auto; padding: 20px 16px 48px; }
+h1 { font-size: 32px; color: var(--gruen-tief); }
+h2 { font-size: 22px; color: var(--gruen-tief); margin: 0 0 10px; }
+h3 { font-size: 18px; margin: 18px 0 6px; }
+.karte { background: #fff; border: 1px solid var(--linie); border-radius: 20px; padding: 22px; box-shadow: 0 2px 0 var(--linie), 0 10px 24px rgba(20,107,64,.07); margin-top: 16px; }
+.schueler-link { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.schueler-link a { color: var(--gruen-tief); font-weight: 700; }
+.zeile { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.knopf { display: inline-flex; align-items: center; min-height: 50px; padding: 0 20px; border-radius: 14px; border: 0; background: var(--gruen); color: #fff; font-family: inherit; font-weight: 700; font-size: 17px; box-shadow: 0 3px 0 var(--gruen-tief); text-decoration: none; cursor: pointer; }
+.knopf.zwei { background: #fff; color: var(--gruen-tief); box-shadow: inset 0 0 0 2px var(--gruen-mittel), 0 3px 0 var(--gruen-mittel); }
+.reiter { display: flex; gap: 4px; background: #fff; padding: 5px; border-radius: 999px; border: 1px solid var(--linie); margin-top: 18px; flex-wrap: wrap; }
+.reiter button { min-height: 44px; padding: 0 16px; border: 0; background: none; border-radius: 999px; font-family: inherit; font-weight: 600; font-size: 16px; color: var(--grau); cursor: pointer; }
+.reiter button[aria-selected="true"] { background: var(--gruen); color: #fff; }
+table { width: 100%; border-collapse: collapse; }
+td, th { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--linie); vertical-align: top; }
+th { color: var(--grau); font-weight: 600; font-size: 15px; }
+td:first-child { white-space: nowrap; font-weight: 700; color: var(--gruen-tief); }
+ul, ol { padding-left: 22px; display: grid; gap: 5px; }
+.klein { font-size: 15px; color: var(--grau); }
+.code { font: 800 34px Menlo, Consolas, monospace; letter-spacing: .12em; background: var(--gelb-hell); border: 2px dashed var(--gelb); border-radius: 14px; padding: 6px 18px; display: inline-block; margin: 6px 0; }
+.hinweis { background: var(--gelb-hell); border-left: 5px solid var(--gelb); border-radius: 10px; padding: 10px 14px; margin-top: 12px; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+<h1>Metalle &amp; Co. · Lehrkraft</h1>
+<p>NuT 7 · Doppelstunde (90 Min.) · Metalle, Halbmetalle, Nichtmetalle, Halogene, Edelgase · Grundlage Buch S. 60–67</p>
+
+<div class="karte schueler-link">
+  <div><h2>Schülerversion</h2>
+  <p><a href="./" target="_blank" rel="noopener">fhe86.github.io/metalle-nichtmetalle</a></p>
+  <p class="klein">Für Sharezone, Tafel oder QR. Der Fortschritt bleibt auf dem jeweiligen iPad gespeichert.</p>
+  <div class="zeile"><a class="knopf zwei" href="./" target="_blank" rel="noopener">Schülerversion öffnen</a><button class="knopf" type="button" id="kopieren">Link kopieren</button><a class="knopf zwei" href="beamer.html" target="_blank" rel="noopener">Beamer: Einstieg und Abschluss</a></div></div>
+  <img src="qr.png" alt="QR-Code zur Schülerversion" width="160" height="160">
+</div>
+
+<div class="reiter" role="tablist">
+  <button role="tab" aria-selected="true" data-ziel="ablauf">Ablauf</button>
+  <button role="tab" aria-selected="false" data-ziel="loesungen">Lösungen</button>
+  <button role="tab" aria-selected="false" data-ziel="freischalten">Freischalten</button>
+</div>
+
+<section class="karte" id="ablauf">
+  <h2>Stundenverlauf</h2>
+  <table>
+    <tr><th>Zeit</th><th>Phase</th><th>Was passiert</th></tr>
+    <tr><td>0–10</td><td>Einstieg (Beamer)</td><td><b>Beamer-Seite, Reiter Einstieg.</b> Sechs Mystery-Bilder (Zeppelin, Pfanne, Schwimmbad, Strommast, Leuchtreklame, Kochtopf). Leitfrage: „Warum nimmt man genau diesen Stoff?“ Klasse stimmt pro Bild ab: Metall oder nicht? Antippen schaltet die Markierung um. Nicht auflösen.</td></tr>
+    <tr><td>10–15</td><td>Auftrag</td><td>QR zeigen, Zweierteams oder allein. Ansage: Stationen der Reihe nach, erst „Prüfen“, dann „Weiter“. Am Ende kommt der Hefteintrag.</td></tr>
+    <tr><td>15–70</td><td>Selbstlernen</td><td>4 Stationen je 12–14 Min. Jede beginnt mit einer Infokarte (das Wichtigste aus dem Buch, mit Vorlese-Knopf), danach eine Aufgabe pro Bildschirm. Zusatzaufgaben sind gelb markiert und überspringbar.</td></tr>
+    <tr><td>70–85</td><td>Hefteintrag</td><td>Schaltet sich nach Station 4 automatisch frei. Abschreiben, Überschriften grün, Periodensystem in drei Farben. Nachzügler: Code unter „Freischalten“.</td></tr>
+    <tr><td>85–90</td><td>Abschluss (Beamer)</td><td><b>Beamer-Seite, Reiter Abschluss.</b> Blitz-Check zu Brom mit Fingerzeichen A bis D, dann Auflösung der Mystery-Bilder.</td></tr>
+  </table>
+  <h3>Vorbereitung</h3>
+  <ul>
+    <li>iPads geladen, Link in Sharezone oder QR an der Tafel.</li>
+    <li>Optional Kopfhörer für den Vorlese-Knopf (Sprachausgabe des iPads).</li>
+    <li>Buntstifte braun, orange, gelb für das Periodensystem im Heft.</li>
+    <li>Das Buch ist nicht nötig, die Infokarten enthalten das Wichtigste. Die Seitenangabe steht oben rechts, falls jemand nachschlagen will.</li>
+  </ul>
+  <div class="hinweis">Die Seite läuft nach dem ersten Laden auch ohne Internet weiter. Wer das iPad wechselt oder den Verlauf löscht, beginnt von vorn.</div>
+</section>
+
+<section class="karte" id="loesungen" hidden>
+  <h2>Lösungen</h2>
+  <h3>Station 1 · Eigenschafts-Labor</h3>
+  <ul>
+    <li>Metalle: Kupfer, Eisen, Aluminium (überall „ja“). Nichtmetalle: Schwefel (überall „nein“), Grafit.</li>
+    <li>Stolperstein Grafit: leitet Strom und Wärme, ist aber spröde und glänzt nicht. Kohlenstoff ist ein Nichtmetall.</li>
+    <li>Bilder: Münzen = Glanz, Strommast = elektrische Leitfähigkeit, Schmied = Formbarkeit, Kochtopf = Wärmeleitfähigkeit.</li>
+    <li>Aluminium in Leitungen: leitet Strom und ist sehr leicht.</li>
+    <li>Zusatz: Stahl = Eisen + Kohlenstoff, Bronze = Kupfer + Zinn, Messing = Kupfer + Zink.</li>
+  </ul>
+  <h3>Station 2 · PSE-Färbe-Detektiv</h3>
+  <ul>
+    <li>Steckbriefe: Na, Mg, Al, K, Ca = Metall · Si, Ge = Halbmetall · S, O, C, Cl = Nichtmetall.</li>
+    <li>Treppe (7 Halbmetalle wie Buch S. 66): B, Si, Ge, As, Sb, Te, At.</li>
+    <li>Regel: links Metalle, rechts Nichtmetalle, dazwischen Halbmetalle. Ausnahme Wasserstoff (links oben, Nichtmetall).</li>
+    <li>Gruppen-Check: Elemente einer Gruppe haben ähnliche Eigenschaften.</li>
+  </ul>
+  <h3>Station 3 · Fall Schwimmbad</h3>
+  <ul>
+    <li>Stoff im Wasser: Chlor. Grund: tötet Keime.</li>
+    <li>Kolben: Fluor hellgelb (Gas), Chlor gelbgrün (Gas), Brom rotbraun (flüssig), Iod violett (fest).</li>
+    <li>Reaktionsfreudigkeit: Fluor &gt; Chlor &gt; Brom &gt; Iod.</li>
+    <li>Zusatz: Brom ist das einzige bei Zimmertemperatur flüssige Nichtmetall.</li>
+  </ul>
+  <h3>Station 4 · Edelgas-Chat</h3>
+  <ul>
+    <li>Argon lehnt ab: 8 Außenelektronen, Außenschale voll, reaktionsträge.</li>
+    <li>Neon: 8 Außenelektronen. Helium: erste Schale mit 2 Elektronen voll.</li>
+    <li>Zeppelin: Helium brennt nicht, Wasserstoff ist brennbar.</li>
+    <li>Alltag: Helium Ballons, Neon Reklameröhren, Argon Schutzgas beim Schweißen, Xenon Autoscheinwerfer.</li>
+    <li>Zusatz Namen: Helium Sonne, Neon neu, Argon träge, Krypton verborgen.</li>
+  </ul>
+  <h3>Blitz-Check Brom</h3>
+  <p>Richtig A (7. Hauptgruppe, Halogene). B = „flüssig wie Quecksilber, also Metall“ · C = Gruppen verwechselt · D = „besonders, also Halbmetall“.</p>
+</section>
+
+<section class="karte" id="freischalten" hidden>
+  <h2>Hefteintrag für Nachzügler freischalten</h2>
+  <p>Wer am Stundenende nicht fertig ist: auf der Startseite ganz unten „Code von der Lehrkraft“ öffnen und diesen Code eingeben. Dann sind alle Stationen und der Hefteintrag offen.</p>
+  <div class="code">ARGON</div>
+  <p class="klein">Bewusst einfach gehalten, kein Geheimnis: Es geht nur um das Freischalten des Hefteintrags, es werden keine Daten gespeichert oder verschickt.</p>
+</section>
+</main>
+<script>
+document.querySelectorAll('[role="tab"]').forEach((t) => t.addEventListener("click", () => {
+  document.querySelectorAll('[role="tab"]').forEach((x) => { x.setAttribute("aria-selected", String(x === t)); document.getElementById(x.dataset.ziel).hidden = x !== t; });
+}));
+document.getElementById("kopieren").addEventListener("click", async (e) => {
+  const link = new URL("./", location.href).href;
+  try { await navigator.clipboard.writeText(link); e.target.textContent = "Kopiert!"; }
+  catch (err) { e.target.textContent = link; return; }
+  setTimeout(() => (e.target.textContent = "Link kopieren"), 1800);
+});
+</script>
+</body>
+</html>
