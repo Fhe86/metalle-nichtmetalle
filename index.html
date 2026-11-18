@@ -56,6 +56,8 @@ b { font-weight: 700; }
 .so-gehts span { background: var(--gruen-hell); color: var(--gruen-tief); border-radius: 999px; padding: 6px 14px; font-size: 15px; font-weight: 600; }
 .abschnitt { font-size: 26px; color: var(--gruen-tief); margin: 28px 0 12px; }
 .kacheln { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.kacheln.drei { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 640px) { .kacheln.drei { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .kachel { position: relative; text-align: left; border: 2px solid var(--linie); background: var(--karte); border-radius: 18px; padding: 14px 16px 16px; min-height: 250px; display: flex; flex-direction: column; box-shadow: var(--schatten); transition: transform .15s; }
 .kachel:hover:not([disabled]) { transform: translateY(-3px); }
 .kachel .ord { position: absolute; top: 10px; left: 14px; font-weight: 800; color: var(--grau); }

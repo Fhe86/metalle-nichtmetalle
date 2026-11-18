@@ -56,6 +56,8 @@ b { font-weight: 700; }
 .so-gehts span { background: var(--gruen-hell); color: var(--gruen-tief); border-radius: 999px; padding: 6px 14px; font-size: 15px; font-weight: 600; }
 .abschnitt { font-size: 26px; color: var(--gruen-tief); margin: 28px 0 12px; }
 .kacheln { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.kacheln.drei { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 640px) { .kacheln.drei { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .kachel { position: relative; text-align: left; border: 2px solid var(--linie); background: var(--karte); border-radius: 18px; padding: 14px 16px 16px; min-height: 250px; display: flex; flex-direction: column; box-shadow: var(--schatten); transition: transform .15s; }
 .kachel:hover:not([disabled]) { transform: translateY(-3px); }
 .kachel .ord { position: absolute; top: 10px; left: 14px; font-weight: 800; color: var(--grau); }
@@ -629,7 +631,8 @@ const FREISCHALTCODE = "ARGON";
 
 </script>
 <script>
-/* Beamer-Seite: Einstieg (Mystery-Bilder) und Abschluss (Hinge-Frage + Auflösung). Läuft ohne Speicher. */
+/* Einstieg (Mystery-Bilder) und Abschluss (Hinge-Frage + Auflösung). Läuft ohne Speicher.
+   beamer.html: ein Container #beamer mit eigenen Reitern. lehrer.html: getrennte Container #beamer-einstieg und #beamer-abschluss. */
 "use strict";
 const B = window.BILDER || {};
 function h(tag, attrs, ...kinder) {
@@ -662,18 +665,25 @@ const HINGE = {
 };
 
 const wurzel = document.getElementById("beamer");
+const zielEinstieg = document.getElementById("beamer-einstieg");
+const zielAbschluss = document.getElementById("beamer-abschluss");
 let modus = location.hash === "#abschluss" ? "abschluss" : "einstieg";
 const markierung = MYSTERY.map(() => 0);
 let aufgeloest = false, hingeAuf = false;
 
 function zeichne() {
+  if (!wurzel) {
+    if (zielEinstieg) zielEinstieg.replaceChildren(einstieg());
+    if (zielAbschluss) zielAbschluss.replaceChildren(abschluss());
+    return;
+  }
   const reiter = h("nav", { class: "reiter-beamer", style: "display:flex;gap:8px;margin:16px 0" },
     [["einstieg", "Einstieg"], ["abschluss", "Abschluss"]].map(([id, t]) => h("button", { class: "knopf" + (modus === id ? "" : " zwei"), type: "button", onclick: () => { modus = id; location.hash = id; zeichne(); } }, t)));
   wurzel.replaceChildren(reiter, modus === "einstieg" ? einstieg() : abschluss());
 }
 
 function karten(mitAufloesung) {
-  return h("div", { class: "kacheln", style: "grid-template-columns:repeat(3,1fr)" }, MYSTERY.map((m, i) => {
+  return h("div", { class: "kacheln drei" }, MYSTERY.map((m, i) => {
     const karte = h("button", { class: "kachel", type: "button", style: "min-height:0;padding:10px", onclick: () => {
       if (mitAufloesung) return; markierung[i] = (markierung[i] + 1) % STUFEN.length; zeichne();
     } },
